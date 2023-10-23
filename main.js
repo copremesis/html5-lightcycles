@@ -49,7 +49,7 @@ game = {
   },
   
   stop: function(cycle) {
-    (new Audio('http://localhost:8000/media/quarter_second_crash_17_bell_br_05.mp3')).play();
+    (new Audio('quarter_second_cxx_two_08.mp3')).play();
     game.over = true;
     context.fillStyle = '#FFF';
     context.font = (canvas.height / 15) + 'px sans-serif';
