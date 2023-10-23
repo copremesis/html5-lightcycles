@@ -8,27 +8,29 @@ context = canvas.getContext("2d");
 
 enemy = {
   type: 'program',
-  width: 8,
-  height: 8,
-  color: '#92F15F',
+  width: 4,
+  height: 4,
+  //color: '#92F15F',
+  color: 'pink',
   history: [],
   current_direction: null
 };
 
 player = {
   type: 'user',
-  width: 8,
-  height: 8,
-  color: '#58BEFF',
+  width: 4,
+  height: 4,
+  color: 'yellow',
+  //color: '#58BEFF',
   history: [],
   current_direction: null
 };
 
 keys = {
-  up: [38, 87],
-  down: [40, 83],
-  left: [37, 65],
-  right: [39, 68],
+  up: [75, 38, 87],
+  down: [74, 40, 83],
+  left: [72, 37, 65],
+  right: [76, 39, 68],
   start_game: [13, 32]
 };
 
@@ -47,6 +49,7 @@ game = {
   },
   
   stop: function(cycle) {
+    (new Audio('http://localhost:8000/media/quarter_second_crash_17_bell_br_05.mp3')).play();
     game.over = true;
     context.fillStyle = '#FFF';
     context.font = (canvas.height / 15) + 'px sans-serif';
@@ -74,7 +77,7 @@ cycle = {
   resetPlayer: function() {
     player.x = canvas.width - (canvas.width / (player.width / 2) + 4);
     player.y = (canvas.height / 2) + (player.height / 2);
-    player.color = '#58BEFF';
+    player.color = 'yellow';
     player.history = [];    
     player.current_direction = "left";
   },
@@ -82,7 +85,7 @@ cycle = {
   resetEnemy: function() {
     enemy.x = (canvas.width / (enemy.width / 2) - 4);
     enemy.y = (canvas.height / 2) + (enemy.height / 2);
-    enemy.color = '#92F15F';
+    enemy.color = 'pink';
     enemy.history = [];
     enemy.current_direction = "right";
   },
@@ -244,5 +247,5 @@ loop = function() {
 
 main = function() {
   game.start();
-  setInterval(loop, 100);  
+  setInterval(loop, 50);  
 }();
